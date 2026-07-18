@@ -1,0 +1,54 @@
+project:
+  output_root: /global/homes/l/lonappan/pscratch/CBDATA
+inputs:
+  npipe_root: /global/cfs/cdirs/cmb/data/planck2020/npipe
+  quickpol_root: /global/cfs/cdirs/cmb/data/planck2020/npipe/npipe6v20A/quickpol
+  mask_root: /global/homes/l/lonappan/pscratch/Cosmic_Birefringence/generate_observed_power_spectra/masks
+  f_sky_file: /global/homes/l/lonappan/workspace/cosmic_birefringence/data/f.npy
+spectra:
+  frequencies:
+  - '100'
+  - '143'
+  - '217'
+  - '353'
+  splits:
+  - A
+  - B
+  masks:
+  - '0'
+  - '30'
+  nside: 2048
+  lmax: 1520
+  bin_width: 20
+  bin_lmin: 51
+  bin_lmax: 1491
+  purify_e: false
+  purify_b: false
+theory:
+  lmax: 1600
+  psi_sigma: 1.5
+  tau: 0.0544
+  ns: 0.9649
+  H0: 67.36
+  ombh2: 0.02237
+  omch2: 0.12
+  As: 2.1e-09
+likelihood:
+  backend: fortran
+  threads: 100
+  mask: '0'
+  lmin: 51
+  lmax: 1411
+  bin_width: 20
+  flat_beta_prior: 5.0
+  flat_alpha_prior: 5.0
+  with_ln_det_cov: true
+  number_of_A: 4
+  upper_bound_A: 1.0
+  turn_off_for_lowest_indices: 0
+sampler:
+  nwalkers: 32
+  nsteps: 100000
+  burnin: 5000
+  thin: 5
+  seed: 1234

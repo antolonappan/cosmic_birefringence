@@ -1,0 +1,27 @@
+python module _tools_fast_fortran
+  interface
+    subroutine likelihood_prob(clo,clt,cov,ln_det,nob,alpha,beta,prob)
+      real*8 dimension(:,:),intent(in) :: clo
+      real*8 dimension(:,:),intent(in) :: clt
+      real*8 dimension(:,:,:),intent(in) :: cov
+      logical intent(in) :: ln_det
+      integer intent(in) :: nob
+      real*8 dimension(:),intent(in) :: alpha
+      real*8 dimension(:),intent(in) :: beta
+      real*8 intent(out) :: prob
+    end subroutine likelihood_prob
+    subroutine likelihood_prob_model_eb(clo,clt,cov,ln_det,nob,alpha,beta,psi,a,turnoff,prob)
+      real*8 dimension(:,:),intent(in) :: clo
+      real*8 dimension(:,:),intent(in) :: clt
+      real*8 dimension(:,:,:),intent(in) :: cov
+      logical intent(in) :: ln_det
+      integer intent(in) :: nob
+      real*8 dimension(:),intent(in) :: alpha
+      real*8 dimension(:),intent(in) :: beta
+      real*8 dimension(:),intent(in) :: psi
+      real*8 dimension(:),intent(in) :: a
+      integer intent(in) :: turnoff
+      real*8 intent(out) :: prob
+    end subroutine likelihood_prob_model_eb
+  end interface
+end python module _tools_fast_fortran

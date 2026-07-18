@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cosmic-bire"
+version = "0.1.0"
+description = "Planck HFI cosmic birefringence analysis using NaMaster"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "matplotlib", "healpy", "pymaster", "astropy", "camb", "emcee", "corner", "getdist", "pyyaml", "numba"]
+
+[project.optional-dependencies]
+fortran-build = ["meson", "ninja"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+cosmic_bire = ["*.so", "fortran/*.f90", "fortran/*.pyf"]
