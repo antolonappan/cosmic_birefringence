@@ -32,7 +32,7 @@ theory:
 likelihood:
   backend: fortran       # python (Numba) or fortran (OpenMP)
   threads: 100
-  mask: "30"
+  mask: "0"
   lmin: 51
   lmax: 1491
   bin_width: 20
