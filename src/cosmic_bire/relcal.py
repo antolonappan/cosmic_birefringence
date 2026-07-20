@@ -34,6 +34,7 @@ import numpy as np
 from .configuration import ensure_output_paths, load_config
 
 DEG = 180.0 / np.pi
+_trapz = getattr(np, "trapezoid", None) or np.trapz
 
 
 class RelCal:
@@ -137,9 +138,9 @@ class RelCal:
         var = c ** 2 * self.varY_b[p][None, :] + s ** 2 * self.varX_b[p][None, :]
         chi2 = (z ** 2 / var).sum(1)
         post = np.exp(-0.5 * (chi2 - chi2.min()))
-        post /= np.trapz(post, d)
-        mean = np.trapz(post * d, d)
-        std = np.sqrt(np.trapz(post * (d - mean) ** 2, d))
+        post /= _trapz(post, d)
+        mean = _trapz(post * d, d)
+        std = np.sqrt(_trapz(post * (d - mean) ** 2, d))
         return sign * mean * DEG, std * DEG
 
     def fit_all_pairs(self):
