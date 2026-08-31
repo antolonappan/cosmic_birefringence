@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "cosmic_birefringence: Differential polarization calibration for cosmic-birefringence analyses"
+authors:
+  - family-names: "Lonappan"
+    given-names: "Anto Idicherian"
+    orcid: "https://orcid.org/0000-0003-1200-9179"
+license: MIT
