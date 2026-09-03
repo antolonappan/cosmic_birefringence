@@ -1,7 +1,7 @@
 # Cosmic Birefringence — Planck HFI
 
 An installable, configuration-driven Planck NPIPE HFI implementation of the
-Eskilt & Komatsu likelihood, using NaMaster.
+Eskilt & Komatsu likelihood(https://github.com/LilleJohs/Cosmic_Birefringence), using NaMaster.
 
 ## Layout
 
