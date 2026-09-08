@@ -1,34 +1,3 @@
-"""Step 3 of the closure program: anchored birefringence from 100/143 GHz.
-
-Pipeline (fully analytic, no simulations):
-
-  1. Load the mask-0 MK chain (validated against RelCal in step 2).
-  2. Fit the total rotations theta_m = alpha_m + beta of the 100/143 GHz
-     A/B maps with the MK likelihood machinery restricted to those four
-     maps and *no* dust term (low-foreground channels; degeneracy with
-     beta is not broken internally -- that's the anchor's job).
-  3. Anchor alpha from the mask-0 MK posterior (its four 100/143 entries)
-     and extract beta_m = theta_m - alpha_m^MK, combined by GLS.
-  4. Repeat the theta fit on the 30% Galactic mask with the SAME anchor.
-     alpha is an instrument property, so if the historical f_sky
-     dependence of MK's beta is a dust-degeneracy artifact rather than a
-     real signal, the anchored beta must be stable between mask 0 and
-     mask 30 -- this is the test.
-
-Errors are analytic throughout:
-  - sigma(theta) from the Fisher matrix of the restricted likelihood
-    (AnchoredBeta.fit_theta).
-  - sigma(alpha_MK) from the MK chain covariance (posterior, used as-is;
-    optionally cross-checked against the MKResponse Fisher matrix).
-  - the theta-anchor cross term via analytic_cov.anchored_beta_cov:
-    cross="same" on mask 0 (theta and anchor share the identical data --
-    the naive quadrature sum double counts and is NOT used there), and
-    cross="nested" on mask 30 (nested-mask Knox: Cov(c^0, c^30) = Var(c^0)
-    for the mask-30 region inside the mask-0 region).
-
-Run as a script:  python scripts/anchored_theta.py [config]
-or import and call ``run(config)`` from a notebook.
-"""
 from __future__ import annotations
 
 import sys

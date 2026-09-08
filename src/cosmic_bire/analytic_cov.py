@@ -1,30 +1,3 @@
-"""Fully analytic covariances for the closure program. No simulations.
-
-Everything derives from the single analytic ingredient already in the
-pipeline: the binned Knox covariance M_b of the stacked data vector
-c_b = {C_b^{E_iE_j}, C_b^{B_iB_j}, C_b^{E_iB_j}} (the saved cov_bin file).
-In the small-angle regime every estimator in the program is a linear
-functional of c_b, so all variances and cross-covariances follow from the
-delta method:
-
-  MK ML point:  the residual is v_b(p) = A_b(p) c_b - B_b(p) t_b with
-  p = (beta, alpha_i[, A_ell]); stationarity of chi2 = sum_b v^T W v gives
-      dp = -F^{-1} sum_b J_b^T W_b A_b dc_b,   F = sum_b J_b^T W_b J_b,
-  with J_b = dv_b/dp and W_b = [A_b M_b A_b^T]^{-1} at the best fit.
-
-  RelCal network:  alpha_rel = G sum_b 2 D^T diag(X_b) Ninv_b Y_b and
-  Y_b = S c_b is a fixed selection of EB entries, so
-      dalpha_rel = [G 2 D^T diag(X_b) Ninv_b S] dc_b.
-
-  Anchored theta fit:  same structure as MK restricted to the chosen maps
-  with no dust term; its data vector is a sub-selection iota of the full one.
-
-Cross terms are then sums over bins of R M_b R'^T. For the mask-30 theta fit
-against the mask-0 anchor, the nested-mask Knox result
-Cov(c^A, c^B) = Var(c^A) for region B inside region A (here A = mask-0
-region, B = mask-30 region) supplies the analytic cross-data covariance,
-consistent with the same approximation scheme as everything else.
-"""
 from __future__ import annotations
 
 import numpy as np

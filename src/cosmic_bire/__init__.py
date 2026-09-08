@@ -1,9 +1,3 @@
-"""User-facing Planck HFI cosmic-birefringence API."""
-
-# The reference likelihood uses Numba ``parallel=True`` kernels while NumPy
-# links against pthreads OpenBLAS in the cb environment. Nested BLAS/OpenMP
-# pools can deadlock, so retain the reference runner's single-thread policy.
-# These must be set before importing NumPy/Numba through the modules below.
 import os
 
 for _variable in (

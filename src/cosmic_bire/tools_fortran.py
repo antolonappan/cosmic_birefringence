@@ -1,4 +1,3 @@
-"""Adapter exposing the tools_fast API with OpenMP Fortran likelihood kernels."""
 from __future__ import annotations
 
 import ctypes

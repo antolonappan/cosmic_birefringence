@@ -11,8 +11,6 @@ import scipy
 import time
 
 class cosmic_birefringence:
-	# This is the class that stores all the variables and formats it correctly.
-	# tools_fast.py does the actual math
 
 	def __init__(self, parameters):
 		self.params = parameters

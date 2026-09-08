@@ -1,29 +1,3 @@
-"""Relative polarization-angle calibration from antisymmetric cross-spectra.
-
-Planck-only extension of the Eskilt & Komatsu pipeline. For every ordered map
-pair (m, n) the combinations
-
-    X_b^{mn} = C_b^{E_m E_n} + C_b^{B_m B_n}
-    Y_b^{mn} = C_b^{E_n B_m} - C_b^{E_m B_n}
-
-satisfy, for a common sky,
-
-    <X_b> = S_b cos(2 Dalpha_mn),   <Y_b> = S_b sin(2 Dalpha_mn),
-
-with Dalpha_mn = alpha_m - alpha_n and S_b = C_b^{EE} + C_b^{BB} (CMB +
-foregrounds + beam, rotation invariant). beta and every intrinsic EB that is
-common-mode between the two maps (CMB EB, single-template dust EB with any
-SED scaling) cancel identically. The estimator is therefore free of the dust
-EB model that enters the Minami-Komatsu likelihood, enabling a closure test
-of the MK-fitted miscalibration-angle differences.
-
-Data conventions follow ``Spectra``/``_reference_likelihood`` exactly:
-raw spectra array ``ocs[i, j, im, jm, {EE,BB,EB}, ell]`` with
-``ocs[i, j, im, jm, 2] = C^{E_{(i,im)} B_{(j,jm)}}``; map index
-``m = nob*im + i`` (all split-A maps first, then split-B); Knox covariance
-with the EB-term-dropping convention of ``tools_fast.covariance``; sky
-fraction from ``f.npy``; binning lmin=51, lmax=1491, dl=20 by default.
-"""
 from __future__ import annotations
 
 from itertools import combinations
